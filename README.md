@@ -35,6 +35,8 @@ gsutil cp gs://bucket-elastic-pr/commons-httpclient-3.1.jar .
 
 gsutil cp gs://bucket-elastic-pr/elasticsearch-hadoop-8.14.1.jar .
 
+```
+
 
 ## 2. ElasticSearch Server Setup
 
