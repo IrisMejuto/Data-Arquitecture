@@ -124,58 +124,45 @@ sudo service elasticsearch restart
 sudo service kibana restart
 ```
 
+---
 
+## 3. Connecting Hadoop to ElasticSearch
 
-## 3. 
+Once the ElasticSearch server has been configured and the required JAR files have been transferred to the Dataproc cluster master node, the next step involves modifying Hive’s configuration to enable connectivity with ElasticSearch.
+
+### Step 1: Modify `hive-site.xml`
+
+The `hive-site.xml` configuration file was updated using `sed` to add the necessary ElasticSearch properties and JAR references.
+
 ```bash
+# Remove the last line of the configuration file
 sudo sed -i '$d' /etc/hive/conf.dist/hive-site.xml
 
+# Add ES connection properties
 sudo sed -i '$a \  <property>\n    <name>es.nodes</name>\n    <value>35.234.149.191</value>\n  </property>\n' /etc/hive/conf.dist/hive-site.xml
 
 sudo sed -i '$a \  <property>\n    <name>es.port</name>\n    <value>9200</value>\n  </property>\n' /etc/hive/conf.dist/hive-site.xml
 
 sudo sed -i '$a \  <property>\n    <name>es.nodes.wan.only</name>\n    <value>true</value>\n  </property>\n' /etc/hive/conf.dist/hive-site.xml
 
+# Reference the ElasticSearch and HttpClient JAR files
 sudo sed -i '$a \  <property>\n    <name>hive.aux.jars.path</name>\n   <value>/usr/lib/hive/lib/elasticsearch-hadoop-8.14.1.jar,/usr/lib/hive/lib/commons-httpclient-3.1.jar</value>\n  </property>\n</configuration>' /etc/hive/conf.dist/hive-site.xml
+```
 
+### Step 2: Move required JAR files to Hive library path
+
+```bash
 sudo cp elasticsearch-hadoop-8.14.1.jar /usr/lib/hive/lib/
 sudo cp commons-httpclient-3.1.jar /usr/lib/hive/lib/
 ```
 
-Enable and start both services:
-
-```bash
-sudo systemctl enable elasticsearch
-sudo systemctl start elasticsearch
-
-sudo systemctl enable kibana
-sudo systemctl start kibana
-```
-
 ---
 
-### Access configuration  
-Configuration files were updated to allow external access:
 
-**`/etc/elasticsearch/elasticsearch.yml`**
-
-```yaml
-network.host: 0.0.0.0
-http.port: 9200
-discovery.type: single-node
-```
-
-**`/etc/kibana/kibana.yml`**
-
-```yaml
-server.host: "0.0.0.0"
-```
-
-Restart both services after editing:
+### Step 3: Restart Hive after applying these configuration changes for them to take effect.
 
 ```bash
-sudo systemctl restart elasticsearch
-sudo systemctl restart kibana
+sudo service hive-server2 restart
 ```
 
 
