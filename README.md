@@ -22,10 +22,12 @@ Setup of a Hadoop cluster using **Dataproc** on Google Cloud Platform. Configura
 A bucket was created to store required JAR files for ElasticSearch integration.
 
 ### Uploading JAR files to the bucket  
-Upload of the following JAR files into the bucket via GCP Console:
+Upload of the following JAR files into the bucket:
 
-- `elasticsearch-hadoop-x.x.x.jar`
-- Additional compatibility JARs for Hive integration
+- [elasticsearch-hadoop-x.x.x.jar](https://github.com/IrisMejuto/Data-Arquitecture/blob/main/files/elasticsearch-hadoop-8.14.1.zip)
+- [commons-httpclient-3.1.jar](https://github.com/IrisMejuto/Data-Arquitecture/blob/main/files/commons-httpclient-3.1.jar)
+
+![Files in the bucket](https://github.com/IrisMejuto/Data-Arquitecture/blob/main/Images/2.1.png)
 
 ### Transferring JAR files to the cluster  
 Files were copied from the bucket to the Hadoop cluster nodes using:
