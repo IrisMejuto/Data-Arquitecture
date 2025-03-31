@@ -18,6 +18,8 @@ Project focused on configuring and integrating a Hadoop cluster in Google Cloud 
 ### Cluster creation in Dataproc  
 Setup of a Hadoop cluster using **Dataproc** on Google Cloud Platform. Configuration included number of nodes, Hadoop version, and network settings.
 
+![Cluster](Images/1.1.png)
+
 ### Bucket creation in Google Cloud Storage  
 A bucket was created to store required JAR files for ElasticSearch integration.
 
