@@ -165,5 +165,60 @@ sudo cp commons-httpclient-3.1.jar /usr/lib/hive/lib/
 sudo service hive-server2 restart
 ```
 
+---
+
+## 4. Indexing Data into ElasticSearch
+
+Before proceeding, ensure that the appropriate **firewall rules** have been configured (as established in Part 2) to allow access to port `9200` from the Hadoop cluster to the ElasticSearch server.
+
+---
+
+### Step 1: Create an index in ElasticSearch  
+
+From the ElasticSearch server, a new index named `alumnos` was created using the following `curl` command:
+
+```bash
+curl -X POST "localhost:9200/alumnos/_doc/6" -H 'Content-Type: application/json' -d'
+{
+  "title": "New Document",
+  "content": "This is a new document for the master class",
+  "tag": ["general", "testing"]
+}'
+```
+
+---
+
+### Step 2: Insert bulk data into the index from Hadoop  
+
+Using the `_bulk` API, multiple documents were indexed into the `alumnos` index from the Hadoop cluster:
+
+```bash
+curl -X POST "http://<ELASTICSEARCH-IP>:9200/_bulk" -H 'Content-Type: application/json' -d'
+{ "index": { "_index": "alumnos", "_id": "3" } }
+{ "id": 3, "name": "Carlos", "last_name": "González" }
+{ "index": { "_index": "alumnos", "_id": "4" } }
+{ "id": 4, "name": "María", "last_name": "López" }
+{ "index": { "_index": "alumnos", "_id": "5" } }
+{ "id": 5, "name": "Luis", "last_name": "Martínez" }
+{ "index": { "_index": "alumnos", "_id": "7" } }
+{ "id": 7, "name": "Sofía", "last_name": "Ramírez" }
+{ "index": { "_index": "alumnos", "_id": "8" } }
+{ "id": 8, "name": "Pedro", "last_name": "Hernández" }
+'
+```
+
+---
+
+### Step 3: Verify indexed data  
+
+To confirm that the documents were successfully indexed, a basic search query was performed:
+
+```bash
+curl -X GET "http://<ELASTICSEARCH-IP>:9200/alumnos/_search?pretty"
+```
+
+![Consulta hive](Images/2.4.3.png)
+```
+---
 
 
