@@ -221,45 +221,8 @@ curl -X GET "http://<ELASTICSEARCH-IP>:9200/alumnos/_search?pretty"
 ```
 ---
 
-
-## 5. Data Visualization in Kibana (Optional)
-
-This optional section focuses on exploring **Kibana** to create a basic dashboard. The goal is to become familiar with the tool and visualize the data indexed in ElasticSearch.
-
----
-
-### Step 1: Access Kibana UI
-
-Open a web browser and navigate to the Kibana instance:
-
 ```
-http://<ELASTICSEARCH-IP>:5601
-```
-
----
-
-### Step 2: Create a Data View
-
-1. In the left-side menu, go to **Analytics** → **Dashboards**.  
-2. Click on **Create Data View**.  
-3. Enter the name of the index: `alumnos`.  
-4. Confirm by clicking **Create Data View**.
-
----
-
-### Step 3: Create a Dashboard
-
-1. Click on **Create Dashboard**.  
-2. Select **Create Visualization**.  
-3. Choose from a variety of visualization types (e.g., pie charts, bar graphs, data tables).  
-4. Configure the visualizations based on the fields available in the `alumnos` index.  
-5. Save the dashboard once satisfied with the layout.
-
-📸 *Optional: Insert screenshot of the created Kibana dashboard*  
-```markdown
-![Kibana Dashboard Example](path/to/kibana-dashboard.png)
-```
-## 5. Data Visualization in Kibana (Optional)
+## 5.Data Visualization in Kibana
 
 This optional section focuses on exploring **Kibana** to create a basic dashboard. The goal is to become familiar with the tool and visualize the data indexed in ElasticSearch.
 
