@@ -8,7 +8,7 @@ Project focused on configuring and integrating a Hadoop cluster in Google Cloud 
 1. [Hadoop Cluster Setup](#1-hadoop-cluster-setup)  
 2. [ElasticSearch Server Setup](#2-elasticsearch-server-setup)  
 3. [Connecting Hadoop to ElasticSearch](#3-connecting-hadoop-to-elasticsearch)  
-4. [Index Creation in ElasticSearch](#4-index-creation-into-elasticsearch)  
+4. [Indexing Data into ElasticSearch](#4-indexing-data-into-elasticsearch)
 5. [Data Visualisation in Kibana](#5-data-visualisation-in-kibana)
 
 ---
