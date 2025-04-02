@@ -218,10 +218,8 @@ curl -X GET "http://<ELASTICSEARCH-IP>:9200/alumnos/_search?pretty"
 ```
 
 ![Consulta hive](Images/2.4.3.png)
-```
 ---
 
-```
 ## 5. Data Visualization in Kibana
 
 This optional section focuses on exploring **Kibana** to create a basic dashboard. The goal is to become familiar with the tool and visualize the data indexed in ElasticSearch.
